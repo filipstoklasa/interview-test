@@ -7,9 +7,10 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
+		"tsc": "tsc",
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run --browser chrome --headed",
-		"cypress:run:ci":"cypress run ",
+		"cypress:run:ci": "cypress run ",
 		"prepare": "husky install"
 	},
 	"dependencies": {

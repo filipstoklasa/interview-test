@@ -7,7 +7,7 @@ const GridComponent = ({ children }: ComponentWithChildren) => (
 		<Grid
 			container
 			spacing={2}
-			sx={{ flexDirection: { xs: "column", md: "row" } }}
+			sx={{ flexDirection: { xs: "column", sm: "row" } }}
 			justifyContent="center"
 			alignItems="center"
 		>
