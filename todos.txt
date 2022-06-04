@@ -1,0 +1,2 @@
+1. modal for detail - universal
+2. fetch data
