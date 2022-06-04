@@ -23,6 +23,7 @@ const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 
 	const onNavigate = useCallback(async (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
 		if (e.currentTarget?.dataset?.identificator) {
+			//@ts-ignore
 			dispatch(getFact(e.currentTarget?.dataset?.identificator))
 		}
 	}, [dispatch])
@@ -35,10 +36,11 @@ const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 		<>
 			<Grid>
 				{data.map((record) => (
-					<GridItem key={record.title} item xs={12} md={5} lg={3} >
+					<GridItem key={record.title} item xs={12} md={6} lg={3} >
 						<Card
 							id={record.releaseYear}
 							title={record.title}
+							releaseYear={record.releaseYear}
 							perex={record.description}
 							image={record?.images?.['Poster Art']?.url}
 							onClick={onNavigate}
