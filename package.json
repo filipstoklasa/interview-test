@@ -12,7 +12,8 @@
 		"cypress:run": "cypress run --browser chrome --headed",
 		"cypress:run:ci": "cypress run ",
 		"prepare": "husky install",
-		"test": "jest"
+		"test": "jest",
+		"test:ci": "npm run test -- --coverage --watchAll=false"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.9.0",
