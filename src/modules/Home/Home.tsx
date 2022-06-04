@@ -1,10 +1,11 @@
 import { useCallback, MouseEvent } from 'react'
-import Box from '@mui/material/Box'
-import { Card } from "components/Card"
+import { IconCard } from "components/IconCard"
 import { Grid } from "components/Grid"
 import GridItem from "@mui/material/Grid"
 import { useRouter } from 'next/router'
 import { MenuPaths } from 'constants/menu'
+import MovieTwoToneIcon from '@mui/icons-material/MovieTwoTone';
+import LiveTvTwoToneIcon from '@mui/icons-material/LiveTvTwoTone';
 
 const HomeModule = () => {
 	const { push } = useRouter()
@@ -18,10 +19,10 @@ const HomeModule = () => {
 	return (
 		<Grid>
 			<GridItem item>
-				<Card id={MenuPaths.series} title='Series' onClick={onNavigate} />
+				<IconCard id={MenuPaths.series} title='Series' Icon={<LiveTvTwoToneIcon fontSize="large" />} onClick={onNavigate} />
 			</GridItem>
 			<GridItem item>
-				<Card id={MenuPaths.movie} title='Movies' onClick={onNavigate} />
+				<IconCard id={MenuPaths.movie} title='Movies' Icon={<MovieTwoToneIcon fontSize="large" />} onClick={onNavigate} />
 			</GridItem>
 		</Grid>
 	)

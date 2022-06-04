@@ -23,8 +23,7 @@ const CardComponent = ({ id, title, releaseYear, perex, image, onClick }: CardCo
 	const [expanded, setExpanded] = useState(false)
 
 	const toggleExpander = useCallback(
-		(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
-			e.stopPropagation()
+		() => {
 			setExpanded((prev) => !prev)
 		},
 		[],
@@ -42,6 +41,7 @@ const CardComponent = ({ id, title, releaseYear, perex, image, onClick }: CardCo
 							alt="card-image"
 							objectFit='contain'
 							objectPosition="center"
+							priority
 						/>
 					</Box>
 				)}
@@ -53,11 +53,7 @@ const CardComponent = ({ id, title, releaseYear, perex, image, onClick }: CardCo
 								{title}
 							</Typography>
 						</Tooltip>
-						{perex && (
-							<IconButton onClick={toggleExpander} sx={{ transform: !expanded ? 'rotate(0deg)' : 'rotate(180deg)' }} >
-								<ExpandMoreIcon />
-							</IconButton>
-						)}
+
 					</Box>
 					<Typography gutterBottom variant="subtitle2" noWrap >
 						{releaseYear}
@@ -71,6 +67,13 @@ const CardComponent = ({ id, title, releaseYear, perex, image, onClick }: CardCo
 					)}
 				</CardContent>
 			</CardActionArea>
+			{perex && (
+				<Box display="flex" flexDirection="column" alignItems="flex-end">
+					<IconButton onClick={toggleExpander} sx={{ transform: !expanded ? 'rotate(0deg)' : 'rotate(180deg)' }} >
+						<ExpandMoreIcon />
+					</IconButton>
+				</Box>
+			)}
 		</Card>
 	)
 }

@@ -36,7 +36,7 @@ const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 		<>
 			<Grid>
 				{data.map((record) => (
-					<GridItem key={record.title} item xs={12} md={6} lg={3} >
+					<GridItem key={record.title} item xs={12} sm={5} md={3} >
 						<Card
 							id={record.releaseYear}
 							title={record.title}
