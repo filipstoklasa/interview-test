@@ -32,7 +32,7 @@ const CardComponent = ({ id, title, releaseYear, perex, image, onClick }: CardCo
 
 	return (
 		<Card sx={{ maxWidth: 340 }}>
-			<CardActionArea onClick={onClick} data-identificator={id}>
+			<CardActionArea onClick={onClick} data-identificator={id} data-testid={id}>
 				{image && (
 					<Box style={{ position: "relative", height: 300 }}>
 						<Image
