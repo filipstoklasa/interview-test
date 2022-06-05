@@ -10,7 +10,7 @@ type ModalInitialState = {
 	error: string | null;
 };
 
-const initialState: ModalInitialState = {
+export const initialState: ModalInitialState = {
 	year: null,
 	loading: false,
 	fact: null,
@@ -28,7 +28,8 @@ export const getFact = createAsyncThunk<
 			dispatch(setModalYear(year));
 			const response = await api.get(`/${year}/year`);
 			return response.data;
-		} catch {
+		} catch (err) {
+			console.log(err);
 			dispatch(setError("Error when fetching fact has occured"));
 			return rejectWithValue(
 				"We are sorry, but we could find fact, you were searching for."
