@@ -1,22 +1,16 @@
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 type AlertComponentProps = {
 	error: string | null;
-	handleClose: () => void
-}
+	handleClose: () => void;
+};
 
-const AlertComponent = (
-	{ error, handleClose }: AlertComponentProps
-) => (
-	<Snackbar
-		open={!!error}
-		onClose={handleClose}
-		message={error}
-	>
-		<Alert elevation={6} variant="filled" severity='error'>
+const AlertComponent = ({ error, handleClose }: AlertComponentProps) => (
+	<Snackbar open={!!error} onClose={handleClose} message={error}>
+		<Alert elevation={6} variant="filled" severity="error">
 			{error}
 			<IconButton
 				size="small"
@@ -27,8 +21,7 @@ const AlertComponent = (
 				<CloseIcon fontSize="small" />
 			</IconButton>
 		</Alert>
-	</Snackbar >
+	</Snackbar>
 );
 
-
-export default AlertComponent
+export default AlertComponent;

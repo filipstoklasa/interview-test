@@ -1,1 +1,1 @@
-export * from './ComponentWithChildren'
+export * from "./ComponentWithChildren";
