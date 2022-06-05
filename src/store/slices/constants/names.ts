@@ -1,4 +1,4 @@
 export enum Names {
 	modal = "modal",
-	error = "error"
+	error = "error",
 }

@@ -1,6 +1,6 @@
-import Grid from '@mui/material/Grid'
-import Fade from '@mui/material/Fade'
-import type { ComponentWithChildren } from 'types'
+import Grid from "@mui/material/Grid";
+import Fade from "@mui/material/Fade";
+import type { ComponentWithChildren } from "types";
 
 const GridComponent = ({ children }: ComponentWithChildren) => (
 	<Fade in>
@@ -14,7 +14,6 @@ const GridComponent = ({ children }: ComponentWithChildren) => (
 			{children}
 		</Grid>
 	</Fade>
+);
 
-)
-
-export default GridComponent
+export default GridComponent;

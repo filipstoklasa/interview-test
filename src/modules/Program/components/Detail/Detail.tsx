@@ -1,24 +1,27 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useAppSelector } from "store";
 import { Modal } from "components/Modal";
-import { DetailCard } from 'components/DetailCard'
+import { DetailCard } from "components/DetailCard";
 import { resetModalYear } from "store/slices/modal";
 
 const DetailModal = () => {
-	const dispatch = useDispatch()
-	const { loading, year, fact, error } = useAppSelector((state) => state.modal)
+	const dispatch = useDispatch();
+	const { loading, year, fact, error } = useAppSelector((state) => state.modal);
 
 	const onCancelModal = useCallback(() => {
-		dispatch(resetModalYear())
-	}, [dispatch])
-
+		dispatch(resetModalYear());
+	}, [dispatch]);
 
 	return (
-		<Modal open={!!year} title={`Fact for year ${year ?? ""}`} onClose={onCancelModal}>
+		<Modal
+			open={!!year}
+			title={`Fact for year ${year ?? ""}`}
+			onClose={onCancelModal}
+		>
 			<DetailCard>
 				{loading ? (
 					<Box display="flex" justifyContent="center" alignSelf="center">
@@ -31,8 +34,8 @@ const DetailModal = () => {
 					</Box>
 				)}
 			</DetailCard>
-		</Modal >
-	)
-}
+		</Modal>
+	);
+};
 
-export default DetailModal
+export default DetailModal;
