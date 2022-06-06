@@ -29,9 +29,9 @@ export const getFact = createAsyncThunk<
 			const response = await api.get(`/${year}/year`);
 			return response.data;
 		} catch {
-			dispatch(setError("Error when fetching fact has occured"));
+			dispatch(setError("Error while fetching fact has occured"));
 			return rejectWithValue(
-				"We are sorry, but we could find fact, you were searching for."
+				"We are sorry, but we could not find the fact you were searching for."
 			);
 		}
 	}
