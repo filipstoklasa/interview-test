@@ -9,6 +9,7 @@ class AxiosClient {
 	instance: AxiosInstance;
 	constructor() {
 		this.instance = axios.create(config);
+		console.log('here')
 	}
 
 	get get() {
