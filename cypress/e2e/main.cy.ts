@@ -19,7 +19,6 @@ const runProgramTypeSuite = (programType: string) => {
 		const firstItem = movieItems.first();
 		firstItem.click();
 		firstItem.invoke("attr", "data-identificator").then((id) => {
-			cy.get('[data-test-id="spinner"]').should("exist");
 			const dialog = cy.get('[data-test-id="dialog"]');
 			dialog.should("exist").should("contain", id);
 			cy.get(`[data-test-id="dialog-${id}-content"]`).should("exist");
