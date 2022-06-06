@@ -5,7 +5,7 @@ type ErrorInitialState = {
 	error: string | null;
 };
 
-const initialState: ErrorInitialState = {
+export const initialState: ErrorInitialState = {
 	error: null,
 };
 

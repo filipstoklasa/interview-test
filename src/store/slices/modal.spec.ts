@@ -9,6 +9,8 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const year = "2017";
 
+jest.setTimeout(10000);
+
 describe("[Modal reducer] - Test modal reducer", () => {
 	it("[Modal reducer] - should return the initial state", () => {
 		//@ts-ignore
