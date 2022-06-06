@@ -1,9 +1,9 @@
-import { MouseEvent, ReactNode } from "react";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
+import type { MouseEvent, ReactNode } from "react";
 
 type IconCardComponentProps = {
 	id: string;

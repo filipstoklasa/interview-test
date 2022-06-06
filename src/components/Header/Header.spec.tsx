@@ -21,7 +21,7 @@ jest.mock("next/router", () => ({
 	},
 }));
 
-test("Header display menu items with links", () => {
+test("[Header component] - Header display menu items with links", () => {
 	render(<Header />);
 
 	for (let i of PAGES) {

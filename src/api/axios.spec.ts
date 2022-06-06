@@ -1,11 +1,11 @@
 import { api } from "./index";
 
-describe("Check axios instance", () => {
+describe("[api] - Check axios instance", () => {
 	it("has get method", () => {
 		expect(api).toHaveProperty("get");
 	});
 
-	it("has axios instance", () => {
+	it("[api] - has axios instance", () => {
 		expect(api).toHaveProperty("instance");
 	});
 });

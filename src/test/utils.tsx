@@ -1,4 +1,4 @@
-import { render as rtlRender, RenderOptions } from "@testing-library/react";
+import { render as rtlRender } from "@testing-library/react";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import configureStore from "redux-mock-store";
@@ -6,6 +6,7 @@ import "@testing-library/jest-dom";
 import type { Store } from "redux";
 import type { RootState } from "store";
 import type { ReactElement, ReactNode } from "react";
+import type { RenderOptions } from "@testing-library/react";
 
 interface ExtendedRenderOptions extends RenderOptions {
 	initialState: Partial<RootState>;
@@ -19,9 +20,7 @@ const render = (
 		store = configureStore<Partial<RootState>>([thunk])(initialState),
 		...renderOptions
 	}: ExtendedRenderOptions = {
-		initialState: {
-			/* any default state you want */
-		},
+		initialState: {},
 	}
 ) => {
 	return rtlRender(component, {
@@ -39,5 +38,4 @@ const TestWrapper = (store: Store) => {
 };
 
 export * from "@testing-library/react";
-// override the built-in render with our own
 export { render };

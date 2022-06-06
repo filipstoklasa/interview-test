@@ -28,8 +28,7 @@ export const getFact = createAsyncThunk<
 			dispatch(setModalYear(year));
 			const response = await api.get(`/${year}/year`);
 			return response.data;
-		} catch (err) {
-			console.log(err);
+		} catch {
 			dispatch(setError("Error when fetching fact has occured"));
 			return rejectWithValue(
 				"We are sorry, but we could find fact, you were searching for."

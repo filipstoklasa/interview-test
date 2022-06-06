@@ -10,7 +10,7 @@ const props = {
 	onClick: jest.fn(),
 };
 
-test("Loads, display alert component and clicks on the close icon", () => {
+test("[Card component] - Loads, display alert component and clicks on the close icon", () => {
 	render(<Card {...props} />);
 
 	expect(screen.getByTestId(props.id)).toBeVisible();

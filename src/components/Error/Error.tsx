@@ -1,4 +1,4 @@
-import { useCallback, forwardRef } from "react";
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "store";
 import { setError } from "store/slices/error";

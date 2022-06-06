@@ -1,8 +1,8 @@
 import { render, screen } from "test/utils";
 import { Error } from "./index";
 
-describe("Error wrapper", () => {
-	it("shows error from the store", () => {
+describe("[Error component] - Error wrapper", () => {
+	it("[Error component] - shows error from the store", () => {
 		const initialState = {
 			error: {
 				error: "mock error",
@@ -14,7 +14,7 @@ describe("Error wrapper", () => {
 		expect(screen.getByTestId("CloseIcon")).toBeVisible();
 	});
 
-	it("doesnt show error from the store", () => {
+	it("[Error component] - doesnt show error from the store", () => {
 		const initialState = {
 			error: {
 				error: null,

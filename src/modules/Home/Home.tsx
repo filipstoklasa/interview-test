@@ -1,4 +1,4 @@
-import { useCallback, MouseEvent } from "react";
+import { useCallback } from "react";
 import { IconCard } from "components/IconCard";
 import { Grid } from "components/Grid";
 import GridItem from "@mui/material/Grid";
@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { MenuPaths } from "constants/menu";
 import MovieTwoToneIcon from "@mui/icons-material/MovieTwoTone";
 import LiveTvTwoToneIcon from "@mui/icons-material/LiveTvTwoTone";
+import type { MouseEvent } from "react";
 
 const HomeModule = () => {
 	const { push } = useRouter();

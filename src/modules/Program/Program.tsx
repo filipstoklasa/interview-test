@@ -1,4 +1,4 @@
-import { useCallback, MouseEvent, ChangeEvent } from "react";
+import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import GridItem from "@mui/material/Grid";
@@ -9,6 +9,7 @@ import { Grid } from "components/Grid";
 import { DetailModal } from "./components/Detail";
 import { getFact } from "store/slices/modal";
 import type { DataRecord } from "types";
+import type { MouseEvent, ChangeEvent } from "react";
 
 type ProgramModuleProps = {
 	data: DataRecord[];

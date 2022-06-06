@@ -4,7 +4,7 @@ import { Alert } from "./index";
 const errorMessage = "Error has occured";
 const handleClose = jest.fn();
 
-test("Renders Alert component", () => {
+test("[Alert component] - Renders Alert component", () => {
 	render(<Alert error={errorMessage} handleClose={handleClose} />);
 	fireEvent.click(screen.getByTestId("CloseIcon"));
 

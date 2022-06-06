@@ -10,7 +10,7 @@ const initialState = {
 	},
 };
 
-test("modal", () => {
+test("[Detail modal component] - modal of fact of the year", () => {
 	render(<DetailModal />, { initialState });
 
 	expect(
@@ -19,6 +19,5 @@ test("modal", () => {
 	expect(screen.getByText(initialState.modal.fact)).toBeVisible();
 
 	fireEvent.click(screen.getByTestId("CloseIcon"));
-
 	expect(screen.queryByTestId("dialog")).not.toBeInTheDocument();
 });

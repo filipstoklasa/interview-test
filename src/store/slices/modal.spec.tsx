@@ -9,25 +9,25 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const year = "2017";
 
-describe("Test modal reducer", () => {
-	it("should return the initial state", () => {
+describe("[Modal reducer] - Test modal reducer", () => {
+	it("[Modal reducer] - should return the initial state", () => {
 		//@ts-ignore
 		expect(reducer(undefined, {})).toEqual(initialState);
 	});
 
-	it("sets modal year", () => {
+	it("[Modal reducer] - sets modal year", () => {
 		expect(reducer(initialState, setModalYear(year))).toEqual({
 			...initialState,
 			year,
 		});
 	});
-	it("set reset modal", () => {
+	it("[Modal reducer] - set reset modal", () => {
 		expect(reducer({ ...initialState, year }, resetModalYear())).toEqual(
 			initialState
 		);
 	});
 
-	it("fetches api data with thunk action", async () => {
+	it("[Modal reducer] - fetches api data with thunk action", async () => {
 		const store = configureStore({
 			reducer,
 		});
