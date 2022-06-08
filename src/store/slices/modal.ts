@@ -17,11 +17,7 @@ export const initialState: ModalInitialState = {
 	error: null,
 };
 
-export const getFact = createAsyncThunk<
-	string,
-	string,
-	{ dispatch: any; rejectWithValue: any }
->(
+export const getFact = createAsyncThunk(
 	`${Names.modal}/setModalId`,
 	async (year: string, { dispatch, rejectWithValue }) => {
 		try {
