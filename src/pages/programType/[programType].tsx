@@ -1,40 +1,24 @@
 import { Program } from "modules/Program";
-import { getProgramTypeData, getPagedData } from "utils/data";
-import type { NextPage, GetServerSidePropsContext } from "next";
-import type { DataRecord } from "types";
+import { recordsApi } from 'api/record'
+import { wrapper } from 'store'
 
-type ProgramProps = {
-	data: DataRecord[];
-	total: number;
-	page: number;
-};
+export default Program;
 
-const ProgramPage: NextPage<ProgramProps> = (props) => <Program {...props} />;
+export const getServerSideProps = wrapper.getServerSideProps(
+	(store) => async ({
+		params,
+	}) => {
+		try {
+			const programTypeId = params?.programType as string
+			store.dispatch(recordsApi.endpoints.getRecords.initiate({ programType: programTypeId }))
+			await Promise.all(recordsApi.util.getRunningOperationPromises())
 
-export default ProgramPage;
-
-export const getServerSideProps = ({
-	params,
-	query,
-}: GetServerSidePropsContext<{
-	programType: string;
-	page: string | undefined;
-}>) => {
-	const page =
-		query?.page && !isNaN(Number(query?.page)) ? Number(query?.page) : 1;
-	const data = getProgramTypeData(params?.programType);
-
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
-	return {
-		props: {
-			data: getPagedData(data, page - 1),
-			total: data.length,
-			page,
-		},
-	};
-};
+			return {
+				props: {},
+			};
+		} catch {
+			return {
+				notFound: true
+			}
+		}
+	});

@@ -8,18 +8,13 @@ import { Card } from "components/Card";
 import { Grid } from "components/Grid";
 import { DetailModal } from "./components/Detail";
 import { getFact } from "store/slices/modal";
-import type { DataRecord } from "types";
+import { useGetRecordsQuery } from "api/record";
 import type { MouseEvent, ChangeEvent } from "react";
 
-type ProgramModuleProps = {
-	data: DataRecord[];
-	total: number;
-	page: number;
-};
-
-const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
-	const dispatch = useDispatch();
+const ProgramModule = () => {
 	const { push, query } = useRouter();
+	const { data } = useGetRecordsQuery({ programType: query.programType as string ?? "" })
+	const dispatch = useDispatch();
 
 	const onNavigate = useCallback(
 		async (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
@@ -41,25 +36,25 @@ const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 	return (
 		<>
 			<Grid>
-				{data.map((record) => (
+				{data?.data.map((record) => (
 					<GridItem key={record.title} item xs={12} sm={5} md={3}>
 						<Card
 							id={record.releaseYear}
 							title={record.title}
 							releaseYear={record.releaseYear}
 							perex={record.description}
-							image={record?.images?.["Poster Art"]?.url}
+							image={""}
 							onClick={onNavigate}
 						/>
 					</GridItem>
 				))}
 			</Grid>
 			<Box display="flex" justifyContent="center" p={4}>
-				<Pagination
-					count={Math.ceil(total / 10)}
-					page={page}
+				{data?.count && <Pagination
+					count={Math.ceil(data?.count / 10)}
+					page={1}
 					onChange={onPageChange}
-				/>
+				/>}
 			</Box>
 			<DetailModal />
 		</>
