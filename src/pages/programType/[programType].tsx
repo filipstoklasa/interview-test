@@ -1,5 +1,5 @@
 import { Program } from "modules/Program";
-import { recordsApi } from 'api/record'
+import { records } from 'api/records/record'
 import { wrapper } from 'store'
 
 export default Program;
@@ -10,8 +10,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
 	}) => {
 		try {
 			const programTypeId = params?.programType as string
-			store.dispatch(recordsApi.endpoints.getRecords.initiate({ programType: programTypeId }))
-			await Promise.all(recordsApi.util.getRunningOperationPromises())
+			store.dispatch(records.endpoints.getRecords.initiate({ programType: programTypeId }))
+			await Promise.all(records.util.getRunningOperationPromises())
 
 			return {
 				props: {},

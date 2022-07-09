@@ -8,7 +8,7 @@ import { Card } from "components/Card";
 import { Grid } from "components/Grid";
 import { DetailModal } from "./components/Detail";
 import { getFact } from "store/slices/modal";
-import { useGetRecordsQuery } from "api/record";
+import { useGetRecordsQuery } from "api/records/record";
 import type { MouseEvent, ChangeEvent } from "react";
 
 const ProgramModule = () => {
