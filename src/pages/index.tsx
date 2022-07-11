@@ -1,6 +1,21 @@
 import { Home } from "modules/Home";
-import type { NextPage } from "next";
+import { apiLocal } from "store/api"
+import { wrapper } from 'store'
 
-const HomePage: NextPage = () => <Home />;
+export default Home;
 
-export default HomePage;
+export const getServerSideProps = wrapper.getServerSideProps(
+	(store) => async () => {
+		try {
+			store.dispatch(apiLocal.endpoints.getProgramTypes.initiate())
+			await Promise.all(apiLocal.util.getRunningOperationPromises())
+
+			return {
+				props: {},
+			};
+		} catch {
+			return {
+				notFound: true
+			}
+		}
+	});

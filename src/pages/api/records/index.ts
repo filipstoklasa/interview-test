@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "api/server/client";
+import prisma from "db/client";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { programTypeId } = req.query;

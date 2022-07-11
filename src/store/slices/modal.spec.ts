@@ -3,7 +3,6 @@ import {
 	setModalYear,
 	resetModalYear,
 	initialState,
-	getFact,
 } from "./modal";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -27,16 +26,5 @@ describe("[Modal reducer] - Test modal reducer", () => {
 		expect(reducer({ ...initialState, year }, resetModalYear())).toEqual(
 			initialState
 		);
-	});
-
-	it("[Modal reducer] - fetches api data with thunk action", async () => {
-		const store = configureStore({
-			reducer,
-		});
-
-		await store.dispatch(getFact(year));
-		const state = store.getState();
-
-		expect(state).not.toEqual(initialState);
 	});
 });

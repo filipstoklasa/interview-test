@@ -1,6 +1,7 @@
-import { render, screen } from "test/utils";
+import { render, screen, setupApiStore, waitFor } from "test";
 import { Header } from "./index";
-import { PAGES } from "constants/menu";
+import { STATIC_PAGES } from "constants/menu";
+import { apiLocal } from "store/api"
 
 jest.mock("next/router", () => ({
 	useRouter() {
@@ -21,10 +22,18 @@ jest.mock("next/router", () => ({
 	},
 }));
 
-test("[Header component] - Header display menu items with links", () => {
-	render(<Header />);
+const storeRef = setupApiStore(apiLocal)
 
-	for (let i of PAGES) {
-		expect(screen.getByText(i.title)).toBeVisible();
-	}
+
+test("[Header component] - Header display menu items with links", async () => {
+	render(<Header />, { wrapper: storeRef.wrapper })
+
+	expect(screen.getByTestId("progress")).toBeVisible();
+
+	await waitFor(() => {
+		for (let i of STATIC_PAGES) {
+			expect(screen.getByText(i.title)).toBeVisible();
+		}
+	})
+
 });

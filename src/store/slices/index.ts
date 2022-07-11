@@ -1,10 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { reducer as modal } from "./modal";
 import { reducer as error } from "./error";
-import { api } from "api/rtk";
+import { apiNumbers, apiLocal } from "store/api";
 
 export const reducer = combineReducers({
+	[apiLocal.reducerPath]: apiLocal.reducer,
+	[apiNumbers.reducerPath]: apiNumbers.reducer,
 	modal,
 	error,
-	[api.reducerPath]: api.reducer,
 });

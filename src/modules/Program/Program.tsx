@@ -7,20 +7,19 @@ import Box from "@mui/material/Box";
 import { Card } from "components/Card";
 import { Grid } from "components/Grid";
 import { DetailModal } from "./components/Detail";
-import { getFact } from "store/slices/modal";
-import { useGetRecordsQuery } from "api/records/record";
+import { apiLocal } from "store/api";
+import { setModalYear } from "store/slices/modal";
 import type { MouseEvent, ChangeEvent } from "react";
 
 const ProgramModule = () => {
 	const { push, query } = useRouter();
-	const { data } = useGetRecordsQuery({ programType: query.programType as string ?? "" })
+	const { data } = apiLocal.useGetRecordsQuery({ programType: query.programType as string })
 	const dispatch = useDispatch();
 
 	const onNavigate = useCallback(
 		async (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
 			if (e.currentTarget?.dataset?.identificator) {
-				//@ts-ignore
-				dispatch(getFact(e.currentTarget?.dataset?.identificator));
+				dispatch(setModalYear(e.currentTarget?.dataset?.identificator));
 			}
 		},
 		[dispatch]
