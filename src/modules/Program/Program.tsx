@@ -13,7 +13,7 @@ import type { MouseEvent, ChangeEvent } from "react";
 
 const ProgramModule = () => {
 	const { push, query } = useRouter();
-	const { data } = apiLocal.useGetRecordsQuery({ programType: query.programType as string })
+	const { data } = apiLocal.useGetRecordsQuery({ query: { programType: query.programType as string } })
 	const dispatch = useDispatch();
 
 	const onNavigate = useCallback(

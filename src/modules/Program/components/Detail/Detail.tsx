@@ -11,7 +11,7 @@ import { apiNumbers } from "store/api";
 
 
 const Fact = ({ year }: { year: string }) => {
-	const { isLoading, data, isError } = apiNumbers.useGetYearFactQuery(year)
+	const { isLoading, data, isError } = apiNumbers.useGetYearFactQuery({ params: { year } })
 
 	return (
 		<>

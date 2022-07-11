@@ -10,7 +10,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
 	}) => {
 		try {
 			const programTypeId = params?.programType as string
-			store.dispatch(apiLocal.endpoints.getRecords.initiate({ programType: programTypeId }))
+			store.dispatch(apiLocal.endpoints.getRecords.initiate({ query: { programType: programTypeId } }))
 			await Promise.all(apiLocal.util.getRunningOperationPromises())
 
 			return {

@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
-import { URLs } from "store/api/constants/urls";
+import { APIUrls } from "store/api/constants/urls";
+import { Urls } from "./constants/urls";
+import { ReducerPaths } from "store/slices/constants/reducerPaths";
 import type { Record, ProgramType } from "@prisma/client";
 import type { ApiListResponse } from "types/common/Api";
-import { ReducerPaths } from "store/slices/constants/reducerPaths";
+import type { QueryData } from "utils/url";
 
 export enum Tags {
 	Records = "Records",
@@ -12,7 +14,7 @@ export enum Tags {
 
 const apiLocal = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: URLs.local,
+		baseUrl: APIUrls.local,
 	}),
 	reducerPath: ReducerPaths.local,
 	extractRehydrationInfo(action, { reducerPath }) {
@@ -22,12 +24,15 @@ const apiLocal = createApi({
 	},
 	tagTypes: [Tags.Records, Tags.ProgramTypes],
 	endpoints: (build) => ({
-		getRecords: build.query<ApiListResponse<Record>, { programType?: string }>({
-			query: ({ programType }) => `/records?programTypeId=${programType}`,
+		getRecords: build.query<
+			ApiListResponse<Record>,
+			QueryData<void, { programType?: string }>
+		>({
+			query: Urls.getRecords,
 			providesTags: [Tags.Records],
 		}),
 		getProgramTypes: build.query<ApiListResponse<ProgramType>, void>({
-			query: () => "/programTypes",
+			query: Urls.getProgramTypes,
 			providesTags: [Tags.ProgramTypes],
 		}),
 	}),
