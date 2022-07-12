@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"tsc": "tsc",
 		"cypress:open": "cypress open",
-		"cypress:run": "cypress run --browser chrome --headed",
+		"cypress:run": "cypress run --browser electron",
 		"cypress:run:ci": "cypress run ",
 		"prepare": "husky install",
 		"test": "jest --watch",
