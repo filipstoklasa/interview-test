@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "test/utils";
-import { Alert } from "./index";
+import { Alert } from "../index";
 
 const errorMessage = "Error has occured";
 const handleClose = jest.fn();

@@ -1,4 +1,4 @@
-import { reducer, setError, initialState } from "./error";
+import { reducer, setError, initialState } from "../error";
 
 const error = "errorReducer";
 

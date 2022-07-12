@@ -3,7 +3,7 @@ import {
 	setModalYear,
 	resetModalYear,
 	initialState,
-} from "./modal";
+} from "../modal";
 import { configureStore } from "@reduxjs/toolkit";
 
 const year = "2017";

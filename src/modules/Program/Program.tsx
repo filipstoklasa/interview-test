@@ -35,7 +35,7 @@ const ProgramModule = () => {
 	return (
 		<>
 			<Grid>
-				{data?.data.map((record) => (
+				{data?.data?.map((record) => (
 					<GridItem key={record.title} item xs={12} sm={5} md={3}>
 						<Card
 							id={record.releaseYear}

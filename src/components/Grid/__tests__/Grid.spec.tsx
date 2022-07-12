@@ -1,5 +1,5 @@
 import { render, screen } from "test/utils";
-import { Grid } from "./index";
+import { Grid } from "../index";
 
 const text = "test element";
 const Children = <span>{text}</span>;

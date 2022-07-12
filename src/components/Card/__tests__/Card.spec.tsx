@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "test/utils";
-import { Card } from "./index";
+import { Card } from "../index";
 
 const props = {
 	id: "cardId",

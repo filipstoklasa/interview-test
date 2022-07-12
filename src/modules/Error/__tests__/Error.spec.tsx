@@ -1,5 +1,5 @@
 import { render, screen } from "test/utils";
-import { Error } from "./index";
+import { Error } from "../index";
 
 describe("[Error component] - Error wrapper", () => {
 	it("[Error component] - shows error from the store", () => {

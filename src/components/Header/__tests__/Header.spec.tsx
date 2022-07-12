@@ -2,7 +2,7 @@ import { render, screen, waitFor, cleanup } from "test/utils";
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { Header } from "./index";
+import { Header } from "../index";
 import { STATIC_PAGES } from "constants/menu";
 import { APIUrls } from "store/api/constants/urls";
 import { Urls } from "store/api/local/constants/urls";

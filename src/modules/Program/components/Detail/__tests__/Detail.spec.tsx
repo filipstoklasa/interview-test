@@ -1,4 +1,4 @@
-import { DetailModal } from "./index";
+import { DetailModal } from "../index";
 import { render, screen, cleanup, fireEvent, waitFor } from "test/utils";
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { rest } from "msw";

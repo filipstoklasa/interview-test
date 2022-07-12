@@ -1,4 +1,4 @@
-import { urlBuilder } from "./url";
+import { urlBuilder } from "../url";
 
 test("[urlBuilder]", () => {
 	expect(

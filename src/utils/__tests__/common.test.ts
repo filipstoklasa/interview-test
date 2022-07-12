@@ -1,4 +1,4 @@
-import { capitalise } from "./common";
+import { capitalise } from "../common";
 
 test("[capitalise] - forms capitalised string", () => {
 	expect(capitalise("")).toEqual("");
