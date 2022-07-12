@@ -5,6 +5,7 @@ import type { ComponentWithChildren } from "types";
 const GridComponent = ({ children }: ComponentWithChildren) => (
 	<Fade in>
 		<Grid
+			data-testid="items-list"
 			container
 			spacing={2}
 			sx={{ flexDirection: { xs: "column", sm: "row" } }}

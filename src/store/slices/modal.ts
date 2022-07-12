@@ -1,43 +1,19 @@
-import { api } from "api";
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Names } from "./constants/names";
-import { setError } from "./error";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ReducerPaths } from "./constants/reducerPaths";
 
 type ModalInitialState = {
-	year: string | null;
-	loading: boolean;
-	fact: string | null;
-	error: string | null;
+	year: string | null
 };
 
 export const initialState: ModalInitialState = {
 	year: null,
-	loading: false,
-	fact: null,
-	error: null,
 };
-
-export const getFact = createAsyncThunk(
-	`${Names.modal}/setModalId`,
-	async (year: string, { dispatch, rejectWithValue }) => {
-		try {
-			dispatch(setModalYear(year));
-			const response = await api.get(`/${year}/year`);
-			return response.data;
-		} catch {
-			dispatch(setError("Error while fetching fact has occured"));
-			return rejectWithValue(
-				"We are sorry, but we could not find the fact you were searching for."
-			);
-		}
-	}
-);
 
 export const {
 	reducer,
 	actions: { resetModalYear, setModalYear },
 } = createSlice({
-	name: Names.modal,
+	name: ReducerPaths.modal,
 	initialState,
 	reducers: {
 		resetModalYear: (state) => {
@@ -46,19 +22,5 @@ export const {
 		setModalYear: (state, action: PayloadAction<string>) => {
 			state.year = action.payload;
 		},
-	},
-	extraReducers: (builder) => {
-		builder
-			.addCase(getFact.pending, (state) => {
-				state.loading = true;
-			})
-			.addCase(getFact.fulfilled, (state, action: PayloadAction<string>) => {
-				state.fact = action.payload;
-				state.loading = false;
-			})
-			.addCase(getFact.rejected, (state, action: PayloadAction<unknown>) => {
-				state.loading = false;
-				state.error = action.payload as string;
-			});
 	},
 });

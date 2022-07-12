@@ -1,41 +1,33 @@
+import { Provider } from 'react-redux'
+import { makeStore } from 'store'
 import { render as rtlRender } from "@testing-library/react";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import configureStore from "redux-mock-store";
-import "@testing-library/jest-dom";
-import type { Store } from "redux";
-import type { RootState } from "store";
-import type { ReactElement, ReactNode } from "react";
+import type { RootState } from 'store'
+import type { ReactElement, ReactNode } from 'react'
+import type { Store } from '@reduxjs/toolkit'
 import type { RenderOptions } from "@testing-library/react";
 
 interface ExtendedRenderOptions extends RenderOptions {
-	initialState: Partial<RootState>;
-	store?: Store<Partial<RootState>>;
+	initialState?: Partial<RootState>
 }
 
-const render = (
-	component: ReactElement,
-	{
-		initialState,
-		store = configureStore<Partial<RootState>>([thunk])(initialState),
-		...renderOptions
-	}: ExtendedRenderOptions = {
-		initialState: {},
-	}
-) => {
-	return rtlRender(component, {
-		wrapper: TestWrapper(store),
-		...renderOptions,
-	});
-};
-
-const TestWrapper = (store: Store) => {
+const withProvider = (store: Store) => {
 	const storeRender = ({ children }: { children?: ReactNode }) => (
 		<Provider store={store}>{children}</Provider>
 	);
-
 	return storeRender;
 };
 
-export * from "@testing-library/react";
-export { render };
+const render = (component: ReactElement, { initialState, ...renderOptions }: ExtendedRenderOptions = { initialState: {} }) => {
+	const store = makeStore({ initialState })
+
+	return {
+		store,
+		render: rtlRender(component, {
+			wrapper: withProvider(store),
+			...renderOptions
+		})
+	}
+}
+
+export * from '@testing-library/react'
+export { render }

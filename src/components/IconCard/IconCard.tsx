@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import type { MouseEvent, ReactNode } from "react";
 
 type IconCardComponentProps = {
-	id: string;
+	id: string | number;
 	Icon: ReactNode;
 	title: string;
 	onClick: (arg: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;

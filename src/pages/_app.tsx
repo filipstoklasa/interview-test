@@ -1,19 +1,21 @@
-import { Provider } from "react-redux";
+import AbortController from "abort-controller";
 import { Layout } from "components/Layout";
-import { Error } from "components/Error";
-import { store } from "store";
+import { Error } from "modules/Error";
+import { wrapper } from "store";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+Object.assign(globalThis, {
+	AbortController,
+});
+
+function App({ Component, pageProps }: AppProps) {
 	return (
-		<Provider store={store}>
-			<Layout>
-				<Component {...pageProps} />
-			</Layout>
+		<Layout>
+			<Component {...pageProps} />
 			<Error />
-		</Provider>
+		</Layout>
 	);
 }
 
-export default MyApp;
+export default wrapper.withRedux(App);
