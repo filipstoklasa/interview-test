@@ -12,12 +12,13 @@ model Record {
   title         String
   description   String
   releaseYear   Int
+  image         String
   programType   ProgramType @relation(fields: [programTypeId], references: [id])
   programTypeId Int
 }
 
 model ProgramType {
   id     Int      @id @default(autoincrement())
-  name   String
+  name   String   @unique
   Record Record[]
 }

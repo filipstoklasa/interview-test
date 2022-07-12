@@ -11,10 +11,12 @@
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run --browser electron",
 		"cypress:run:ci": "cypress run ",
-		"prepare": "husky install",
+		"prepare": "husky install && npm run db:init",
 		"test": "jest --watch",
 		"test:ci": "npm run test -- --coverage --watchAll=false",
-		"db:populate": "ts-node ./populate.ts"
+		"db:init": "npx prisma generate && npx prisma db push",
+		"db:populate": "ts-node ./scripts/populate.ts",
+		"db:compose": "npm run db:init && npm run db:populate"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.9.0",

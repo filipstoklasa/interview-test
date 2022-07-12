@@ -42,7 +42,7 @@ const ProgramModule = () => {
 							title={record.title}
 							releaseYear={record.releaseYear}
 							perex={record.description}
-							image={""}
+							image={record.image}
 							onClick={onNavigate}
 						/>
 					</GridItem>

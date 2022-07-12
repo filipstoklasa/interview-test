@@ -28,7 +28,7 @@ jest.mock("next/router", () => ({
 	},
 }));
 
-const MOCKED_ITEMS: Record[] = [{ title: "Test Item", description: "Test Desc", releaseYear: 2022, id: 1, programTypeId: 1 }]
+const MOCKED_ITEMS: Record[] = [{ title: "Test Item", description: "Test Desc", releaseYear: 2022, id: 1, programTypeId: 1, image: "image src" }]
 const MOCKED_RESPONSE = { count: 1, data: MOCKED_ITEMS } as ApiListResponse<Record>
 
 let cleanupListeners: () => void
