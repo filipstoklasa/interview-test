@@ -4,9 +4,10 @@ import { apiLocal, apiNumbers } from "store/api";
 import { createWrapper } from "next-redux-wrapper";
 import { reducer } from "./slices";
 
-export const makeStore = () =>
+export const makeStore = (args?: any) =>
 	configureStore({
 		reducer,
+		preloadedState: args?.initialState ?? {},
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware().concat(apiLocal.middleware, apiNumbers.middleware),
 	});
