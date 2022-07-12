@@ -1,17 +1,15 @@
 /// <reference types="cypress" />
 
-const runProgramTypeSuite = (programType: string) => {
+const runProgramTypeSuite = (programType: number) => {
 	it(`navigates to the ${programType}`, () => {
-		const movieButton = cy.get(
-			`[data-identificator="/programType/${programType}"]`
-		);
+		const movieButton = cy.get(`[data-identificator="${programType}"]`);
 		movieButton.click();
 		cy.url().should("contain", `/programType/${programType}`);
 	});
 
 	it(`checks if the ${programType} page contains movies`, () => {
-		const movieItems = cy.get("[data-identificator]");
-		movieItems.should("have.length", 10);
+		const movieItems = cy.get('[data-testid="items-list"]');
+		movieItems.should("exist");
 	});
 
 	it("clicks on the first item", () => {
@@ -38,12 +36,12 @@ describe("Check movies page and click detail", () => {
 	before(() => {
 		cy.visit("/");
 	});
-	runProgramTypeSuite("movie");
+	runProgramTypeSuite(1);
 });
 
 describe("Check series page and click detail", () => {
 	before(() => {
 		cy.visit("/");
 	});
-	runProgramTypeSuite("series");
+	runProgramTypeSuite(2);
 });

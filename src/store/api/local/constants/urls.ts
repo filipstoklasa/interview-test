@@ -1,7 +1,6 @@
 import { urlBuilder } from "utils/url";
-import type { URLsObject } from "utils/url";
 
-export const Urls: URLsObject = {
+export const Urls = {
 	getRecords: urlBuilder("/records"),
 	getProgramTypes: urlBuilder("/programTypes"),
 };
