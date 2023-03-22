@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import * as React from "react";
 import Box from "@mui/material/Box";
 import Backdrop from "@mui/material/Backdrop";
 import Dialog from "@mui/material/Dialog";
@@ -20,62 +20,36 @@ const ModalComponent = ({
 	open,
 	onClose,
 	children,
-}: ComponentWithChildren<ModalComponentProps>) => {
-	const timeoutRef = useRef<number>();
-	const [openModal, setModalOpen] = useState(false);
-
-	const handleCancelWithDelay = useCallback(() => {
-		setModalOpen(false);
-		timeoutRef.current = window.setTimeout(() => {
-			onClose();
-		}, 300);
-	}, [onClose]);
-
-	useEffect(() => {
-		open && setModalOpen(true);
-	}, [open]);
-
-	useEffect(() => {
-		return () => {
-			if (timeoutRef.current) {
-				clearTimeout(timeoutRef.current);
-			}
-		};
-	}, [open]);
-
-	return (
-		<Dialog
-			aria-labelledby="transition-modal-title"
-			aria-describedby="transition-modal-description"
-			data-test-id="dialog"
-			open={openModal}
-			onClose={handleCancelWithDelay}
-			BackdropComponent={Backdrop}
-			BackdropProps={{
-				timeout: 500,
-			}}
-		>
-			<Fade in={openModal}>
-				<Box>
-					<Box
-						display="flex"
-						justifyContent="space-between"
-						alignItems="flex-start"
+}: ComponentWithChildren<ModalComponentProps>) => (
+	<Dialog
+		data-test-id="dialog"
+		open={open}
+		onClose={onClose}
+		BackdropComponent={Backdrop}
+		BackdropProps={{
+			timeout: 500,
+		}}
+	>
+		<Fade in={open}>
+			<Box>
+				<Box
+					display="flex"
+					justifyContent="space-between"
+					alignItems="flex-start"
+				>
+					<DialogTitle>{title}</DialogTitle>
+					<IconButton
+						aria-label="close"
+						data-test-id="dialog-close"
+						onClick={onClose}
 					>
-						<DialogTitle>{title}</DialogTitle>
-						<IconButton
-							aria-label="close"
-							data-test-id="dialog-close"
-							onClick={handleCancelWithDelay}
-						>
-							<CloseIcon />
-						</IconButton>
-					</Box>
-					<DialogContent>{children}</DialogContent>
+						<CloseIcon />
+					</IconButton>
 				</Box>
-			</Fade>
-		</Dialog>
-	);
-};
+				<DialogContent>{children}</DialogContent>
+			</Box>
+		</Fade>
+	</Dialog>
+);
 
 export default ModalComponent;

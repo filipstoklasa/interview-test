@@ -3,12 +3,12 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { Names } from "./constants/names";
 import { setError } from "./error";
 
-type ModalInitialState = {
+interface ModalInitialState {
 	year: string | null;
 	loading: boolean;
 	fact: string | null;
 	error: string | null;
-};
+}
 
 export const initialState: ModalInitialState = {
 	year: null,
@@ -22,8 +22,9 @@ export const getFact = createAsyncThunk(
 	async (year: string, { dispatch, rejectWithValue }) => {
 		try {
 			dispatch(setModalYear(year));
-			const response = await api.get(`/${year}/year`);
-			return response.data;
+			const { data } = await api.get(`/${year}/year`);
+			// throw new Error();
+			return data;
 		} catch {
 			dispatch(setError("Error while fetching fact has occured"));
 			return rejectWithValue(

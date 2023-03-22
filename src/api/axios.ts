@@ -1,19 +1,10 @@
 import axios from "axios";
-import type { AxiosInstance, AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig } from "axios";
+
+const baseUrl = "http://numbersapi.com";
 
 const config: AxiosRequestConfig = {
-	baseURL: "http://numbersapi.com",
+	baseURL: baseUrl,
 };
 
-class AxiosClient {
-	instance: AxiosInstance;
-	constructor() {
-		this.instance = axios.create(config);
-	}
-
-	get get() {
-		return this.instance.get;
-	}
-}
-
-export default new AxiosClient();
+export default axios.create(config);

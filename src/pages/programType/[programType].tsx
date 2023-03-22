@@ -1,17 +1,8 @@
 import { Program } from "modules/Program";
 import { getProgramTypeData, getPagedData } from "utils/data";
-import type { NextPage, GetServerSidePropsContext } from "next";
-import type { DataRecord } from "types";
+import type { GetServerSidePropsContext } from "next";
 
-type ProgramProps = {
-	data: DataRecord[];
-	total: number;
-	page: number;
-};
-
-const ProgramPage: NextPage<ProgramProps> = (props) => <Program {...props} />;
-
-export default ProgramPage;
+export default Program;
 
 export const getServerSideProps = ({
 	params,

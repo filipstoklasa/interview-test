@@ -1,4 +1,4 @@
-import { useState, useCallback, MouseEvent } from "react";
+import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -10,14 +10,16 @@ import Image from "next/image";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-type CardComponentProps = {
+interface CardComponentProps {
 	id: string | number;
 	title: string;
 	releaseYear: number;
-	onClick: (arg: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
+	onClick: (
+		arg: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+	) => void;
 	image?: string;
 	perex?: string;
-};
+}
 
 const CardComponent = ({
 	id,
@@ -27,9 +29,9 @@ const CardComponent = ({
 	image,
 	onClick,
 }: CardComponentProps) => {
-	const [expanded, setExpanded] = useState(false);
+	const [expanded, setExpanded] = React.useState(false);
 
-	const toggleExpander = useCallback(() => {
+	const toggleExpander = React.useCallback(() => {
 		setExpanded((prev) => !prev);
 	}, []);
 

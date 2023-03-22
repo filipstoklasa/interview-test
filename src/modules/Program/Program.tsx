@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import * as React from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import GridItem from "@mui/material/Grid";
@@ -9,20 +9,19 @@ import { Grid } from "components/Grid";
 import { DetailModal } from "./components/Detail";
 import { getFact } from "store/slices/modal";
 import type { DataRecord } from "types";
-import type { MouseEvent, ChangeEvent } from "react";
 
-type ProgramModuleProps = {
+interface ProgramModuleProps {
 	data: DataRecord[];
 	total: number;
 	page: number;
-};
+}
 
 const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 	const dispatch = useDispatch();
 	const { push, query } = useRouter();
 
-	const onNavigate = useCallback(
-		async (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+	const onNavigate = React.useCallback(
+		async (e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
 			if (e.currentTarget?.dataset?.identificator) {
 				//@ts-ignore
 				dispatch(getFact(e.currentTarget?.dataset?.identificator));
@@ -31,8 +30,8 @@ const ProgramModule = ({ data, total, page }: ProgramModuleProps) => {
 		[dispatch]
 	);
 
-	const onPageChange = useCallback(
-		(_: ChangeEvent<unknown>, page: number) => {
+	const onPageChange = React.useCallback(
+		(_: React.ChangeEvent<unknown>, page: number) => {
 			push(`/programType/${query.programType}?page=${page}`);
 		},
 		[push, query.programType]

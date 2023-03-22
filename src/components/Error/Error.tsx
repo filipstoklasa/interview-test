@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import * as React from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "store";
 import { setError } from "store/slices/error";
@@ -8,7 +8,7 @@ const ErrorComponent = () => {
 	const dispatch = useDispatch();
 	const { error } = useAppSelector((state) => state.error);
 
-	const handleClose = useCallback(() => {
+	const handleClose = React.useCallback(() => {
 		dispatch(setError(null));
 	}, [dispatch]);
 

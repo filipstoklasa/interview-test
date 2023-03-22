@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+	reactStrictMode: true,
 	images: {
-    domains: ['streamcoimg-a.akamaihd.net'],
-  }
-}
+		domains: ["loremflickr.com"],
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

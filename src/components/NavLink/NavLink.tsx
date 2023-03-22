@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import * as React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import LinkComponent from "@mui/material/Link";
@@ -11,10 +11,10 @@ export type NavLinkProps = PropsWithChildren<
 >;
 
 const NavLinkComponent = ({ children, linkProps, ...props }: NavLinkProps) => {
-	const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = React.useState(false);
 	const { asPath, isReady } = useRouter();
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (isReady) {
 			const linkPathname = new URL(
 				(props?.as as string) || (props?.href as string),

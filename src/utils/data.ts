@@ -1,6 +1,8 @@
 import data from "resources/data.json";
 import { ProgramTypes } from "constants/programTypes";
 
+const pageSize = 10;
+
 export const seriesData = data.entries.filter(
 	(item) => item.programType === ProgramTypes.series
 );
@@ -23,5 +25,5 @@ export const getProgramTypeData = (
 };
 
 export const getPagedData = (data: any[], page: number) => [
-	...data.slice(page * 10, page * 10 + 10),
+	...data.slice(page * pageSize, page * pageSize + pageSize),
 ];

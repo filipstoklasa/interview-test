@@ -1,6 +1,6 @@
 import { render, screen } from "test/utils";
 import { Header } from "./index";
-import { PAGES } from "constants/menu";
+import { pages } from "constants/menu";
 
 jest.mock("next/router", () => ({
 	useRouter() {
@@ -24,7 +24,7 @@ jest.mock("next/router", () => ({
 test("[Header component] - Header display menu items with links", () => {
 	render(<Header />);
 
-	for (let i of PAGES) {
+	for (let i of pages) {
 		expect(screen.getByText(i.title)).toBeVisible();
 	}
 });

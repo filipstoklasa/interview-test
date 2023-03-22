@@ -1,22 +1,22 @@
 import { ProgramTypes } from "./programTypes";
 
-export const MenuPaths = {
+export const menuPaths = {
 	home: "/",
 	[ProgramTypes.series]: `/programType/${ProgramTypes.series}`,
 	[ProgramTypes.movie]: `/programType/${ProgramTypes.movie}`,
 };
 
-export const PAGES = [
+export const pages = [
 	{
 		title: "Home",
-		href: MenuPaths.home,
+		href: menuPaths.home,
 	},
 	{
 		title: "Series",
-		href: MenuPaths.series,
+		href: menuPaths.series,
 	},
 	{
 		title: "Movies",
-		href: MenuPaths.movie,
+		href: menuPaths.movie,
 	},
 ];

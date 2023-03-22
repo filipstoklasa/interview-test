@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Names } from "./constants/names";
 
-type ErrorInitialState = {
+interface ErrorInitialState {
 	error: string | null;
-};
+}
 
 export const initialState: ErrorInitialState = {
 	error: null,

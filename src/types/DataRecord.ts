@@ -1,4 +1,4 @@
-export type DataRecord = {
+export interface DataRecord {
 	title: string;
 	description: string;
 	programType: string;
@@ -10,4 +10,4 @@ export type DataRecord = {
 		};
 	};
 	releaseYear: number;
-};
+}
